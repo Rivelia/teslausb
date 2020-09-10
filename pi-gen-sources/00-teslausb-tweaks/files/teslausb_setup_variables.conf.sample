@@ -118,6 +118,12 @@ export HEADLESS_SETUP=true
 # export aws_secret_key=put_your_secretkey_here
 # export aws_sns_topic_arn=put_your_sns_topicarn_here
 
+# Uncomment if setting up Telegram notifications
+# export TELEGRAM_ENABLED=true
+# export TELEGRAM_CHAT_ID=123456789
+# export TELEGRAM_BOT_TOKEN=bot123456789:abcdefghijklmnopqrstuvqxyz987654321
+# export TELEGRAM_SILENT_NOTIFY=false
+
 # Uncomment if setting up Webhook notifications
 # export WEBHOOK_ENABLED=true
 # export WEBHOOK_URL=http://domain/path
@@ -126,6 +132,7 @@ export HEADLESS_SETUP=true
 # Uncomment any trigger_file_xxxxx below if you'd like to create trigger file(s) in the
 # archive directory for the listed clip type after all clips have been transferred for that type.
 # eg; export trigger_file_saved=ARCHIVE_UPLOADED would create a file in $ARCHIVE_BASE/SavedClips/ARCHIVE_UPLOADED on your CIFS / Samba server.
+# Uncomment trigger_file_any to create a trigger file in $ARCHIVE_BASE. This will make tesla_dashcam process both SavedClips and SentryClips when either changes.
 # This is useful if using https://github.com/ehendrix23/tesla_dashcam to further process clips.
 # eg; tesla_dashcom --monitor --monitor_trigger $ARCHIVE_BASE/SavedClips/ARCHIVE_UPLOADED $ARCHIVE_BASE/SavedClips
 #
@@ -133,6 +140,7 @@ export HEADLESS_SETUP=true
 #.
 # export trigger_file_saved=ARCHIVE_UPLOADED
 # export trigger_file_sentry=ARCHIVE_UPLOADED
+# export trigger_file_any=ARCHIVE_UPLOADED
 
 # TeslaUSB can optionally use the Tesla API to keep your car awake, so it can
 # power the Pi long enough for the archiving process to complete. To enable

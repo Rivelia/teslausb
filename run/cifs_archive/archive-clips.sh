@@ -105,6 +105,14 @@ then
   touch "$ARCHIVE_MOUNT/SentryClips/${trigger_file_sentry}"
 fi
 
+# Create trigger file for Archive Root
+# shellcheck disable=SC2154
+if [ -n "${trigger_file_any+x}" ]
+then
+  log "Creating Archive Root Trigger File: $ARCHIVE_MOUNT/${trigger_file_any}"
+  touch "$ARCHIVE_MOUNT/${trigger_file_any}"
+fi
+
 # 2020.8.1 firmware adds a folder for track mode V2
 moveclips "$CAM_MOUNT/TeslaTrackMode"
 
@@ -117,7 +125,7 @@ log "Moved $NUM_FILES_MOVED file(s), failed to copy $NUM_FILES_FAILED, skipped $
 
 if [ $NUM_FILES_MOVED -gt 0 ]
 then
-  /root/bin/send-push-message "TeslaUSB:" "Moved $NUM_FILES_MOVED dashcam file(s), failed to copy $NUM_FILES_FAILED, skipped $NUM_FILES_SKIPPED."
+  /root/bin/send-push-message "$TESLAUSB_HOSTNAME:" "Moved $NUM_FILES_MOVED dashcam file(s), failed to copy $NUM_FILES_FAILED, skipped $NUM_FILES_SKIPPED."
 fi
 
 log "Finished moving clips to archive."
